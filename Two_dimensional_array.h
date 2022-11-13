@@ -8,11 +8,12 @@
 using namespace std;
 
 class Two_dimensional_array: public Matrix {
-	int** Array; //Массив
+	int** Array; //ГЊГ Г±Г±ГЁГў
 public:
-	void In_Array(int N, ifstream& ifst);  //Функция ввода массива
-	void Out_Array(int N, ofstream& ofst); //Функция вывода массива
-	int Sum(int N); //Функция подсчет суммы элементов матрицы
+	void In_Array(int N, ifstream& ifst);  //Г”ГіГ­ГЄГ¶ГЁГї ГўГўГ®Г¤Г  Г¬Г Г±Г±ГЁГўГ 
+	void Out_Array(int N, ofstream& ofst); //Г”ГіГ­ГЄГ¶ГЁГї ГўГ»ГўГ®Г¤Г  Г¬Г Г±Г±ГЁГўГ 
+	int Sum(int N); //Г”ГіГ­ГЄГ¶ГЁГї ГЇГ®Г¤Г±Г·ГҐГІ Г±ГіГ¬Г¬Г» ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г ГІГ°ГЁГ¶Г»
+	void Out_Array(Key_out K_o, int N, ofstream& ofst); //Г”ГіГ­ГЄГ¶ГЁГї ГўГ»ГўГ®Г¤Г  Г¬Г Г±Г±ГЁГўГ 
 	Two_dimensional_array() {};
 };
 #endif //TWO_DIMENSIONAL_ARRAY_H
