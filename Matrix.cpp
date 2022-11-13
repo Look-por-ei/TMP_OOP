@@ -14,37 +14,14 @@ Key_out Matrix::Get_K_o()
 }
 
 Matrix* Matrix::In_Matrix(ifstream& ifst) {
-    Matrix* M; //Г‘Г®Г§Г¤Г ГҐГ¬ ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  Г¬Г ГІГ°ГЁГ¶Гі
+    Matrix* M; //Создаем указатель на матрицу
     int K;
 
-    ifst >> K; //Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° Г¬Г ГІГ°ГЁГ¶Г»
+    ifst >> K; //Считываем идентификатор матрицы
 
     if (K == 1)
     {
-        M = new Two_dimensional_array; //Г‘Г®Г§Г¤Г ГҐГ¬ Г¤ГўГіГ¬ГҐГ°Г­Г»Г© Г¬Г Г±Г±ГЁГў
-
-        int Key_out = 0;
-
-        ifst >> Key_out;
-
-        if (Key_out == 1)
-        {
-            M->K_o= BY_LINE;
-        }
-        else if (Key_out == 2)
-        {
-            M->K_o = BY_COLUMN;
-        }
-        else if (Key_out == 3)
-        {
-            M->K_o = ONE_DIMENSIONAL;
-        }
-
-        ifst >> M->N; //CГ·ГЁГІГ»ГўГ ГҐГ¬ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГј Г¬Г Г±Г±ГЁГўГ 
-    }
-    else if (K == 2)
-    {
-        M = new Diagonal_matrix; //Г‘Г®Г§Г¤Г ГҐГ¬ Г¤ГЁГ ГЈГ®Г­Г Г«ГјГ­ГіГѕ Г¬Г ГІГ°ГЁГ¶Гі
+        M = new Two_dimensional_array; //Создаем двумерный массив
 
         int Key_out = 0;
 
@@ -63,30 +40,69 @@ Matrix* Matrix::In_Matrix(ifstream& ifst) {
             M->K_o = ONE_DIMENSIONAL;
         }
 
-        ifst >> M->N; //CГ·ГЁГІГ»ГўГ ГҐГ¬ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГј Г¬Г Г±Г±ГЁГўГ 
+        ifst >> M->N; //Cчитываем размерность массива
+    }
+    else if (K == 2)
+    {
+        M = new Diagonal_matrix; //Создаем диагональную матрицу
+
+        int Key_out = 0;
+
+        ifst >> Key_out;
+
+        if (Key_out == 1)
+        {
+            M->K_o = BY_LINE;
+        }
+        else if (Key_out == 2)
+        {
+            M->K_o = BY_COLUMN;
+        }
+        else if (Key_out == 3)
+        {
+            M->K_o = ONE_DIMENSIONAL;
+        }
+
+        ifst >> M->N; //Cчитываем размерность массива
     }
     else if (K == 3)
     {
-        M = new Triangular_matrix; //Г‘Г®Г§Г¤Г ГҐГ¬ ГІГ°ГҐГіГЈГ®Г«ГјГ­ГіГѕ Г¬Г ГІГ°ГЁГ¶Гі
+        M = new Triangular_matrix; //Создаем треугольную матрицу
 
-        ifst >> M->N; //CГ·ГЁГІГ»ГўГ ГҐГ¬ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГј Г¬Г Г±Г±ГЁГўГ 
+        int Key_out = 0;
+
+        ifst >> Key_out;
+
+        if (Key_out == 1)
+        {
+            M->K_o = BY_LINE;
+        }
+        else if (Key_out == 2)
+        {
+            M->K_o = BY_COLUMN;
+        }
+        else if (Key_out == 3)
+        {
+            M->K_o = ONE_DIMENSIONAL;
+        }
+
+        ifst >> M->N; //Cчитываем размерность массива
     }
     else
     {
         return 0;
     }
 
-    M->In_Array(M->N, ifst); //Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІГ» Г¬Г ГІГ°ГЁГ¶Г»
+    M->In_Array(M->N, ifst); //Считываем элементы матрицы
     
     return M;
 }
 
-
-void Matrix::Out_Only_Two_Dim(int N, ofstream& ofst) {
-    ofst << endl;
-
 bool Matrix::Compare(Matrix& Other)
 {
     return Sum(N) > Other.Sum(Other.N);
+}
 
+void Matrix::Out_Only_Two_Dim(Key_out K_o, int N, ofstream& ofst) {
+    ofst << endl;
 }
