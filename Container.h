@@ -11,12 +11,6 @@ class Container {
     int Len; // Текущая длина
     Matrix* Cont[Max_len]; //Массив матриц
 public:
-    void Set_Len(int _Len);
-    int Get_Len();
-
-    void Set_Cont(Matrix* _Cont);
-    Matrix* Get_Cont();
-
     void In_Container(ifstream& ifst); //Функция ввода элементов в контейнер
     void Out_Container(ofstream& ofst); //Функция вывода элементов контейнера
     void Clear_Container(); //Функция очистки контейнера

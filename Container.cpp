@@ -33,9 +33,17 @@ void Container::Out_Container(ofstream& ofst) {
     for (int i = 0; i < Len; i++) 
     {
         ofst << i << ": ";
-        Cont[i]->Out_Array(Cont[i]->Get_K_o(), Cont[i]->Get_N(), ofst);
 
-        ofst << "Sum of matrix elements = " << Cont[i]->Sum(Cont[i]->Get_N()) << endl;
+        if (Cont[i]->Get_N() == -1)
+        {
+            ofst << "Incorrect element!" << endl;
+        }
+        else
+        {
+            Cont[i]->Out_Array(Cont[i]->Get_K_o(), Cont[i]->Get_N(), ofst);
+
+            ofst << "Sum of matrix elements = " << Cont[i]->Sum(Cont[i]->Get_N()) << endl;
+        }
     }
 }
 
@@ -56,12 +64,15 @@ void Container::Sort() {
         { 
             for (int j = i + 1; j < Len; j++) 
             { 
-                if (Cont[i]->Compare((*Cont[j]))) 
-                { 
-                    Matrix* Temp = Cont[i]; 
-                    Cont[i] = Cont[j]; 
-                    Cont[j] = Temp; 
-                } 
+                if (Cont[i]->Get_N() != -1 && Cont[j]->Get_N() != -1)
+                {
+                    if (Cont[i]->Compare((*Cont[j])))
+                    {
+                        Matrix* Temp = Cont[i];
+                        Cont[i] = Cont[j];
+                        Cont[j] = Temp;
+                    }
+                }
             } 
         }
     }
@@ -75,22 +86,4 @@ void Container::Out_Only_Two_Dim(ofstream& ofst) {
         ofst << i << ": ";
         Cont[i]->Out_Only_Two_Dim(Cont[i]->Get_K_o(), Cont[i]->Get_N(), ofst);
     }
-}
-
-void Container::Set_Len(int _Len)
-{
-    Len = _Len;
-}
-int Container::Get_Len()
-{
-    return Len;
-}
-
-void Container::Set_Cont(Matrix* _Cont)
-{
-    Cont[0] = _Cont;
-}
-Matrix* Container::Get_Cont()
-{
-    return Cont[0];
 }
