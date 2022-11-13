@@ -6,11 +6,11 @@ void Container::In_Container(ifstream& ifst)
 {
     while (!ifst.eof()) 
     {
-        if ((Cont[Len] = Matrix::In_Matrix(ifst)) != 0) //Считываем очередную матрицу
+        if ((Cont[Len] = Matrix::In_Matrix(ifst)) != 0) //Г‘Г·ГЁГІГ»ГўГ ГҐГ¬ Г®Г·ГҐГ°ГҐГ¤Г­ГіГѕ Г¬Г ГІГ°ГЁГ¶Гі
         {
             Len++;
 
-            if (Len == Max_len) //Проверка на переполнение контейнера
+            if (Len == Max_len) //ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГҐГ°ГҐГЇГ®Г«Г­ГҐГ­ГЁГҐ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г 
             {
                 break;
             }
@@ -20,22 +20,26 @@ void Container::In_Container(ifstream& ifst)
 
 void Container::Out_Container(ofstream& ofst) {
     ofst << "Container contents " << Len
-        << " elements." << endl; //Выводим число элементов массива
+        << " elements." << endl; //Г‚Г»ГўГ®Г¤ГЁГ¬ Г·ГЁГ±Г«Г® ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¬Г Г±Г±ГЁГўГ 
 
-    //Проверка на переполнение
+    //ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГҐГ°ГҐГЇГ®Г«Г­ГҐГ­ГЁГҐ
     if (Len == Max_len)
     {
         ofst << endl << "Conteiner is full (" << Max_len << " elemets)!" << endl <<
             "It can't accommodate more elements." << endl;
     }
 
-    //Выводим номера матриц и сами эти матрицы
+    //Г‚Г»ГўГ®Г¤ГЁГ¬ Г­Г®Г¬ГҐГ°Г  Г¬Г ГІГ°ГЁГ¶ ГЁ Г±Г Г¬ГЁ ГЅГІГЁ Г¬Г ГІГ°ГЁГ¶Г»
     for (int i = 0; i < Len; i++) 
     {
         ofst << i << ": ";
+
         Cont[i]->Out_Array(Cont[i]->Get_N(), ofst);
 
         ofst << "Sum of matrix elements = " << Cont[i]->Sum(Cont[i]->Get_N()) << endl;
+
+        Cont[i]->Out_Array(Cont[i]->Get_K_o(), Cont[i]->Get_N(), ofst);
+
     }
 }
 
@@ -43,7 +47,7 @@ void Container::Clear_Container()
 {
     for (int i = 0; i < Len; i++) 
     {
-        delete Cont[i]; //Очищаем память, вылеленную для каждой матрицы
+        delete Cont[i]; //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј, ГўГ»Г«ГҐГ«ГҐГ­Г­ГіГѕ Г¤Г«Гї ГЄГ Г¦Г¤Г®Г© Г¬Г ГІГ°ГЁГ¶Г»
     }
     
     Len = 0;
