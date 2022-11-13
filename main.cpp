@@ -1,10 +1,11 @@
-﻿// 6lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 7lab_a.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
 #include "Container.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
     if (argc != 3) {
         cout << "incorrect command line! "
             "Waited: command in_file out_file"
@@ -13,34 +14,19 @@ int main(int argc, char* argv[]) {
     }
 
     ifstream ifst(argv[1]);
-
-    if (!ifst.is_open()) {
-        cout << "No input file found or could not open!" << endl;
-        system("pause");
-        return 1;
-    }
-
     ofstream ofst(argv[2]);
-
-    if (!ofst.is_open()) {
-        cout << "No output file found or could not open!" << endl;
-        system("pause");
-        return 1;
-    }
 
     cout << "Start" << endl;
 
-    Container C; //Объявление нового контейнера
+    Container C; //Объявляем новый контейнер
 
-    C.In_Container(ifst); //Запись элементов в контейнер
+    C.In_Container(ifst); //Записываем элементы в контейнер
 
-    ofst << "Filled and sorted container. " << endl;
-
-    C.Sort(); //Сортировка контейнера
+    ofst << "Filled container. " << endl;
 
     C.Out_Container(ofst); //Вывод контейнера
 
-    C.Out_Only_Two_Dim(ofst); //Вывод только двумерного массива
+    C.Multi_Method_Container(ofst); //Вызов мультиметода
 
     C.Clear_Container();//Очистка контейнера
 
