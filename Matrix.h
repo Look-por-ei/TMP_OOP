@@ -16,6 +16,7 @@ class Matrix {
 	int N; //Размерность матрицы
 	Key_out K_o;
 public:
+
 	static Matrix* In_Matrix(ifstream& ifst); //Функция ввода матрицы
 	virtual void In_Array(int N, ifstream& ifst) = 0; //Чисто вирутальная функция ввода матрицы,
                                               //она будет определена каждого класса массива
@@ -29,6 +30,7 @@ public:
 
 	virtual int Sum(int N) = 0;
 	Key_out Get_K_o(); //Функция получения способа вывода матрицы
+
 protected:
 	Matrix() {};
 };
