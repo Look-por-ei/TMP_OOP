@@ -2,37 +2,77 @@
 
 void Two_dimensional_array::In_Array(int N, ifstream& ifst)
 {
-    Array = new int* [N]; //Выделение памяти под массив
+    Array = new int* [N]; //Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ Г¬Г Г±Г±ГЁГў
 
     for (int i = 0; i < N; i++)
     {
-        Array[i] = new int[N]; //Выделение памяти под массив
+        Array[i] = new int[N]; //Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ Г¬Г Г±Г±ГЁГў
     }
 
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
         {
-            ifst >> Array[i][j]; //Ввод элемента массива
+            ifst >> Array[i][j]; //Г‚ГўГ®Г¤ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г¬Г Г±Г±ГЁГўГ 
         }
     }
 }
 
-void Two_dimensional_array::Out_Array(int N, ofstream& ofst)
+void Two_dimensional_array::Out_Array(Key_out K_o, int N, ofstream& ofst)
 {
-    ofst << "It's two dimensional matrix with dimension = " << N << endl; //Выводим размерность массива
+    ofst << "It's two dimensional matrix with dimension = " << N << endl; //Г‚Г»ГўГ®Г¤ГЁГ¬ Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГј Г¬Г Г±Г±ГЁГўГ 
 
-    for (int i = 0; i < N; i++)
+    if (K_o == BY_LINE)
     {
-        for (int j = 0; j < N; j++)
+        for (int i = 0; i < N; i++)
         {
-            ofst << Array[i][j] << " "; //Выводим элементы массива
+            for (int j = 0; j < N; j++)
+            {
+                ofst << Array[i][j] << " ";
+            }
+            ofst << endl;
+        }
+    }
+    else if (K_o == BY_COLUMN)
+    {
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                ofst << Array[j][i] << " ";
+            }
+            ofst << endl;
+        }
+    }
+    else if (K_o == ONE_DIMENSIONAL)
+    {
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                ofst << Array[j][i] << " ";
+            }
         }
 
         ofst << endl;
     }
 }
 
+
 void Two_dimensional_array::Out_Only_Two_Dim(int N, ofstream& ofst) {
     Out_Array(N, ofst);
+
+int Two_dimensional_array::Sum(int N) {
+    int Sum = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            Sum += Array[i][j];
+        }
+    }
+
+    return Sum;
+
 }

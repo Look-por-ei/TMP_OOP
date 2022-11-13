@@ -1,40 +1,92 @@
 #include "Matrix.h"
 #include "Two_dimensional_array.h"
 #include "Diagonal_matrix.h"
+#include "Triangular_matrix.h"
 
 int Matrix::Get_N()
 {
     return N;
 }
 
+Key_out Matrix::Get_K_o()
+{
+    return K_o;
+}
+
 Matrix* Matrix::In_Matrix(ifstream& ifst) {
-    Matrix* M; //Ñîçäàåì óêàçàòåëü íà ìàòðèöó
+    Matrix* M; //Ã‘Ã®Ã§Ã¤Ã Ã¥Ã¬ Ã³ÃªÃ Ã§Ã Ã²Ã¥Ã«Ã¼ Ã­Ã  Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
     int K;
 
-    ifst >> K; //Ñ÷èòûâàåì èäåíòèôèêàòîð ìàòðèöû
+    ifst >> K; //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã¨Ã¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
 
     if (K == 1)
     {
-        M = new Two_dimensional_array; //Ñîçäàåì äâóìåðíûé ìàññèâ
+        M = new Two_dimensional_array; //Ã‘Ã®Ã§Ã¤Ã Ã¥Ã¬ Ã¤Ã¢Ã³Ã¬Ã¥Ã°Ã­Ã»Ã© Ã¬Ã Ã±Ã±Ã¨Ã¢
 
-        ifst >> M->N; //C÷èòûâàåì ðàçìåðíîñòü ìàññèâà
+        int Key_out = 0;
+
+        ifst >> Key_out;
+
+        if (Key_out == 1)
+        {
+            M->K_o= BY_LINE;
+        }
+        else if (Key_out == 2)
+        {
+            M->K_o = BY_COLUMN;
+        }
+        else if (Key_out == 3)
+        {
+            M->K_o = ONE_DIMENSIONAL;
+        }
+
+        ifst >> M->N; //CÃ·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã°Ã Ã§Ã¬Ã¥Ã°Ã­Ã®Ã±Ã²Ã¼ Ã¬Ã Ã±Ã±Ã¨Ã¢Ã 
     }
     else if (K == 2)
     {
-        M = new Diagonal_matrix; //Ñîçäàåì äèàãîíàëüíóþ ìàòðèöó
+        M = new Diagonal_matrix; //Ã‘Ã®Ã§Ã¤Ã Ã¥Ã¬ Ã¤Ã¨Ã Ã£Ã®Ã­Ã Ã«Ã¼Ã­Ã³Ã¾ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
 
-        ifst >> M->N; //C÷èòûâàåì ðàçìåðíîñòü ìàññèâà
+        int Key_out = 0;
+
+        ifst >> Key_out;
+
+        if (Key_out == 1)
+        {
+            M->K_o = BY_LINE;
+        }
+        else if (Key_out == 2)
+        {
+            M->K_o = BY_COLUMN;
+        }
+        else if (Key_out == 3)
+        {
+            M->K_o = ONE_DIMENSIONAL;
+        }
+
+        ifst >> M->N; //CÃ·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã°Ã Ã§Ã¬Ã¥Ã°Ã­Ã®Ã±Ã²Ã¼ Ã¬Ã Ã±Ã±Ã¨Ã¢Ã 
+    }
+    else if (K == 3)
+    {
+        M = new Triangular_matrix; //Ã‘Ã®Ã§Ã¤Ã Ã¥Ã¬ Ã²Ã°Ã¥Ã³Ã£Ã®Ã«Ã¼Ã­Ã³Ã¾ Ã¬Ã Ã²Ã°Ã¨Ã¶Ã³
+
+        ifst >> M->N; //CÃ·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã°Ã Ã§Ã¬Ã¥Ã°Ã­Ã®Ã±Ã²Ã¼ Ã¬Ã Ã±Ã±Ã¨Ã¢Ã 
     }
     else
     {
         return 0;
     }
 
-    M->In_Array(M->N, ifst); //Ñ÷èòûâàåì ýëåìåíòû ìàòðèöû
+    M->In_Array(M->N, ifst); //Ã‘Ã·Ã¨Ã²Ã»Ã¢Ã Ã¥Ã¬ Ã½Ã«Ã¥Ã¬Ã¥Ã­Ã²Ã» Ã¬Ã Ã²Ã°Ã¨Ã¶Ã»
     
     return M;
 }
 
+
 void Matrix::Out_Only_Two_Dim(int N, ofstream& ofst) {
     ofst << endl;
+
+bool Matrix::Compare(Matrix& Other)
+{
+    return Sum(N) > Other.Sum(Other.N);
+
 }

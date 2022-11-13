@@ -1,5 +1,4 @@
-﻿// 2lab_Filter_Out.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+
 
 #include <iostream>
 #include "Container.h"
@@ -23,6 +22,8 @@ int main(int argc, char* argv[])
     C.In_Container(ifst); //Записываем элементы в контейнер
 
     ofst << "Filled container. " << endl;
+
+    C.Sort(); //Сортировка контейнера
 
     C.Out_Container(ofst); //Вывод контейнера
 
