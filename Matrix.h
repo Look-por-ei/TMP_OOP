@@ -23,8 +23,11 @@ public:
                                               //она будет определена каждого класса массива
 	int Get_N(); //Функция получения размерности массива (общее значение)
 
+
 	virtual int Sum(int N) = 0;
 	bool Compare(Matrix& Other);
+
+	virtual int Sum(int N) = 0;
 	Key_out Get_K_o(); //Функция получения способа вывода матрицы
 protected:
 	Matrix() {};
