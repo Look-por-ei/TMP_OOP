@@ -27,6 +27,10 @@ public:
 	Key_out Get_K_o(); //Функция получения способа вывода матрицы
 	virtual void Out_Only_Two_Dim(Key_out K_o, int N, ofstream& ofst); //Функция вывода только двумерного массива
 	bool Compare(Matrix& Other); //Функция сравнения сумм элементов матрицы
+	virtual void Multi_Method(Matrix* Other, ofstream& ofst) = 0; //Функция мультиметода
+	virtual void DiagonalMM(ofstream& ofst) = 0; //Функция мультиметода для диагональной матрицы
+	virtual void Two_DimMM(ofstream& ofst) = 0; //Функция мультиметода для двумерного массива
+	virtual void TriangulaMM(ofstream& ofst) = 0; //Функция мультиметода для треугольной матрицы
 protected:
 	Matrix() {};
 };

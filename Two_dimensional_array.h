@@ -17,6 +17,10 @@ public:
 	void Out_Array(Key_out K_o, int N, ofstream& ofst); //Функция вывода массива
 	int Sum(int N); //Функция подсчета суммы элементов матрицы
 	void Out_Only_Two_Dim(Key_out K_o, int N, ofstream& ofst); //Функция вывода только двумерного массива
+	void Multi_Method(Matrix* Other, ofstream& ofst); //Функция мультиметода
+	void Two_DimMM(ofstream& ofst); //Функция мультиметода для двумерного массива
+	void DiagonalMM(ofstream& ofst); //Функция мультиметода для диагональной матрицы
+	void TriangulaMM(ofstream& ofst); //Функция мультиметода для треугольной матрицы
 	Two_dimensional_array() {};
 };
 #endif //TWO_DIMENSIONAL_ARRAY_H
