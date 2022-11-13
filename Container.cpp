@@ -76,3 +76,21 @@ void Container::Out_Only_Two_Dim(ofstream& ofst) {
         Cont[i]->Out_Only_Two_Dim(Cont[i]->Get_K_o(), Cont[i]->Get_N(), ofst);
     }
 }
+
+void Container::Set_Len(int _Len)
+{
+    Len = _Len;
+}
+int Container::Get_Len()
+{
+    return Len;
+}
+
+void Container::Set_Cont(Matrix* _Cont)
+{
+    Cont[0] = _Cont;
+}
+Matrix* Container::Get_Cont()
+{
+    return Cont[0];
+}
