@@ -57,3 +57,17 @@ void Two_dimensional_array::Out_Array(Key_out K_o, int N, ofstream& ofst)
         ofst << endl;
     }
 }
+
+int Two_dimensional_array::Sum(int N) {
+    int Sum = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < N; j++)
+        {
+            Sum += Array[i][j];
+        }
+    }
+
+    return Sum;
+}
