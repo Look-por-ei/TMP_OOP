@@ -1,11 +1,10 @@
-﻿// 5lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// 6lab.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
 #include "Container.h"
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     if (argc != 3) {
         cout << "incorrect command line! "
             "Waited: command in_file out_file"
@@ -15,8 +14,7 @@ int main(int argc, char* argv[])
 
     ifstream ifst(argv[1]);
 
-    if (!ifst.is_open())
-    {
+    if (!ifst.is_open()) {
         cout << "No input file found or could not open!" << endl;
         system("pause");
         return 1;
@@ -24,8 +22,7 @@ int main(int argc, char* argv[])
 
     ofstream ofst(argv[2]);
 
-    if (!ofst.is_open())
-    {
+    if (!ofst.is_open()) {
         cout << "No output file found or could not open!" << endl;
         system("pause");
         return 1;
@@ -33,17 +30,17 @@ int main(int argc, char* argv[])
 
     cout << "Start" << endl;
 
-    Container C; //Объявляем новый контейнер
+    Container C; //Объявление нового контейнера
 
-    C.In_Container(ifst); //Записываем элементы в контейнер
+    C.In_Container(ifst); //Запись элементов в контейнер
 
-    ofst << "Filled container. " << endl;
+    ofst << "Filled and sorted container. " << endl;
 
     C.Sort(); //Сортировка контейнера
 
     C.Out_Container(ofst); //Вывод контейнера
 
-    C.Out_Only_Two_Dim(ofst); //Вывод только обычного двумерного массива
+    C.Out_Only_Two_Dim(ofst); //Вывод только двумерного массива
 
     C.Clear_Container();//Очистка контейнера
 

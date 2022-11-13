@@ -7,10 +7,11 @@
 
 using namespace std;
 
+//Класс "диагональная матрица"
 class Diagonal_matrix: public Matrix {
-	int* Array; //Массива
+	int* Array; //Массив
 public:
-	int* Get_Array();
+	int* Get_Array(); //Функция получения массива
 
 	void In_Array(int N, ifstream& ifst); //Функция ввода массива
 	void Out_Array(Key_out K_o, int N, ofstream& ofst); //Функция вывода массива
